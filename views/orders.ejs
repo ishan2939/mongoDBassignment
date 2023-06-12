@@ -1,0 +1,89 @@
+<%- include('./includes/head.ejs') %><!-- head EJS -->
+    <link rel="stylesheet" href="http://localhost:3000/public/orders.css"><!-- orders CSS -->
+</head><!-- head ends here -->
+
+<body><!-- body starts here -->
+    
+    <div class="container"><!-- container starts here -->
+
+        <%- include('./includes/navbar.ejs') %><!-- navbar -->
+            
+            <div class="content"><!-- content starts here -->
+                
+                <div class="orderlist"><!-- orders -->
+                    
+                    <% if(response!='') { %><!-- if there are orders -->
+                    
+                        <div class="title">🥡 Your orders 🥡</div>
+                    
+                        <div class="orders">
+
+                            <% for(o of response) {%>
+
+                                <div class="order">
+                                    
+                                    <div class="date"><!-- order date -->
+                                        <%= o.createdAt %>
+                                    </div>
+                    
+                                    <div class="status"><!-- order status -->
+                                        <div>Status: <%= o.status %>
+                                            <% if(o.status=='confirmed') { %>✔️
+                                            <% }else if(o.status=='shipped') { %>🚢
+                                            <% }else if(o.status=='out for delivery') { %>📦
+                                            <% }else if(o.status=='placed') { %>📬
+                                            <% }else if(o.status=='cancelled') { %>❌
+                                            <% } %>
+                                        </div>
+
+                                        <% if(o.status!='placed' && o.status!='cancelled'){ %><!-- cancel button -->
+                                            <a href="/cancelorder/<%= o._id %>">Cancel order</a>
+                                        <% } %>
+                                    </div>
+
+                                    <table>
+                    
+                                        <thead>
+                                            <tr>
+                                                <td>Product name</td>
+                                                <td>Price</td>
+                                            </tr>
+                                        </thead>
+                    
+                                        <tbody>
+                                            <% for(p of o.products) {%>
+                                                <tr>
+                                                    <td>
+                                                        <%= p.p_id.productName %>
+                                                    </td>
+                                                    <td>$<%= p.p_id.price %>
+                                                    </td>
+                                                </tr>
+                                            <% } %>
+                                            <tr>
+                                                <td colspan="2"><!-- total money -->
+                                                    Total: $<%= o.total %>
+                                                </td>
+                                            </tr>
+                    
+                                        </tbody>
+                    
+                                    </table>
+                                        
+                                </div><!-- order div ends here -->
+                            <% } %>
+                        </div>
+                    
+                    <% }else { %><!-- if there are no orders -->
+                        <div class="title">No orders found 😢</div>
+                    <% } %>
+
+                </div><!-- orderlist div ends here -->
+
+            </div><!-- content div ends here -->
+
+        </div><!-- container div ends here -->
+
+    </body><!-- body ends here -->
+
+</html><!-- html ends here -->

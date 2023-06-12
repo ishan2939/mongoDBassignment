@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+}
+
+
+/* container */
+.container{
+    min-width: 98vw;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+
+/* content */
+.container .content {
+    width: 100%;
+    margin-top: 30px;
+    padding: 0px 100px 50px;
+}
+
+.container .content .header{
+    margin-bottom: 50px;
+    color: #0e4f55;
+    font-size: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.container .content .category{
+    padding: 20px;
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.container .content .products{
+    width: 100%;
+    margin: 20px 0px;
+    transition: all .5s;
+}
+
+.products ul{
+    padding: 30px 20px;
+    display: flex;
+    column-gap: 30px;
+    overflow-x: auto;
+    list-style-type: none;
+}
+
+.products ul::-webkit-scrollbar {
+    height: 8px;
+}
+
+/* Track */
+.products ul::-webkit-scrollbar-track {
+    background: #e2cda5;
+}
+
+/* Handle */
+.products ul::-webkit-scrollbar-thumb {
+    background: #e2a83b;
+    border-radius: 20px;
+    height: 8px;
+    cursor: pointer;
+}
+
+/* Handle on hover */
+.products ul::-webkit-scrollbar-thumb:hover {
+    background: #dd9207;
+}
+
+.products ul li{
+    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    border: 2px solid #e2a83b;
+    border-radius: 15px;
+    color: #e2a83b;
+    font-size: 18px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: .5s;
+}
+
+.products ul li:hover {
+    transform: scale(1.1);
+}
+
+.products ul li a{
+    text-decoration: none;
+}
+
+li .image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+}
+
+li .details{
+    min-width: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+li .details .name{
+    width: 130px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+li .details .price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    transition: .3s;
+}
+
+li .details .price .cart a{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0b769;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+li .details .price .cart a:hover{
+    background-color: #dd9207;
+}

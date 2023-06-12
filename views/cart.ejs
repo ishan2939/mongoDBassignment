@@ -1,0 +1,83 @@
+<%- include('./includes/head.ejs') %>
+    <link rel="stylesheet" href="http://localhost:3000/public/cart.css">
+</head>
+
+<body>
+    <div class="container">
+        <%- include('./includes/navbar.ejs') %>
+            
+            <div class="content">
+                <% if(message) {%>
+                    <div class="message"><%= message %></div>
+                <% } %>
+            
+                <div class="productlist">
+            
+                    <ul>
+                        <% if(response!='') {%>
+            
+                            <% for(p of JSON.parse(response)) {%>
+                                <li>
+                                    <div class="icon">
+                                        <%= p.p_id.icon %>
+                                    </div>
+                                    <div class="name">
+                                        <%= p.p_id.productName %>
+                                    </div>
+                                </li>
+            
+                            <% } %>
+                        
+                        <% } else { %>
+                            <li>
+                                <div class="name">There are no products in cart</div>
+                            </li>
+                        <% } %> 
+                    
+                    </ul>
+                    
+                    <% if(response!='') {%>
+                        <a href="/confirmorder">Checkout</a>
+                    <% } %>
+                
+                </div>
+                
+                <div class="total">
+                    
+                    <div class="title">💰 TOTAL 💰</div>
+                    
+                    <ul>
+                        <% if(response!='') {%>
+                            <% for(p of JSON.parse(response)) {%>
+                                <li>
+                                    <div id="p1">
+                                        <%= p.p_id.icon %> $<%= p.p_id.price %> X 1
+                                    </div>
+                                    <div id="p2">=</div>
+                                    <div id="p3">
+                                        <%= p.p_id.price %>$
+                                    </div>
+                                </li>
+                            <% } %>
+                        <% }else{ %>
+                            <li>
+                                <div id="p1">
+                                    $0 X 1
+                                </div>
+                                <div id="p2">=</div>
+                                <div id="p3">
+                                    0$
+                                </div>
+                            </li>
+                        <% } %>
+                    </ul>
+                    
+                    <div class="answer">$ <%= total %></div>
+                
+                </div>
+            
+            </div>
+        </div>
+    </body>
+
+</html>

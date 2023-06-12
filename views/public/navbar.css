@@ -1,0 +1,63 @@
+/* navbar div */
+.container .navbar{
+    padding: 5px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0e4f55;
+}
+
+
+/* farm logo */
+.container .navbar .logo{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .navbar .logo img{
+    width: 40px;
+}
+
+
+/* navbar elements */
+.container .navbar ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.container .navbar ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container .navbar ul li a{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+    border-radius: 30px;
+}
+
+
+/* active menu */
+.active{
+    background-color: #e2a83b;
+}
+
+
+/* cart, orders, logout icons */
+.icons {
+    margin: 0px 10px;
+    padding: 10px !important;
+    font-size: 20px !important;
+}

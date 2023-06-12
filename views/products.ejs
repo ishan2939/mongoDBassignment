@@ -1,0 +1,117 @@
+<%- include('./includes/head.ejs') %><!-- head EJS -->
+    <link rel="stylesheet" href="http://localhost:3000/public/products.css"><!-- products CSS -->
+</head><!-- head ends here -->
+
+<body><!-- body starts here -->
+
+    <div class="container"><!-- container starts here -->
+
+        <%- include('./includes/navbar.ejs') %><!-- navbar EJS -->
+            
+            <div class="content"><!-- content starts here -->
+                
+                <div class="header"><!-- product header -->
+
+                    <div class="title">🗃️ Products 🗃️</div>
+                    
+                    <div class="search"><!-- search and sorting -->
+
+                        <form action="/searchproducts"><!-- searching form -->
+                            <input type="search" placeholder="Enter product name here..." name="name" required>
+                            <button type="submit">
+                                <svg stroke="#fff" fill="#fff" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></g></svg>
+                            </button>
+                        </form>
+                        
+                        <form action="/sortproducts"><!-- sorting form -->
+                            <select name="property" required>
+                                <option value="">Choose option to sort</option>
+                                <option value="name">Name</option>
+                                <option value="price">Price</option>
+                            </select>
+                            <button type="submit"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19.707 14.707c.286-.286.372-.716.217-1.09C19.77 13.244 19.404 13 19 13h-7v2h4.586l-4.293 4.293c-.286.286-.372.716-.217 1.09C12.23 20.756 12.596 21 13 21h7v-2h-4.586L19.707 14.707zM7 3.99L5 3.99 5 15.99 2 15.99 6 19.99 10 15.99 7 15.99zM17 3h-2c-.417 0-.79.259-.937.649l-2.75 7.333h2.137L14.193 9h3.613l.743 1.981h2.137l-2.75-7.333C17.79 3.259 17.417 3 17 3zM14.943 7l.75-2h.613l.75 2H14.943z"></path></svg></button>
+                        </form>
+                    
+                    </div><!-- searching and sorting ends here -->
+
+                </div><!-- header ends here -->
+                
+                <div class="body"><!-- body div -->
+                    
+                    <div class="message"><%= msg %></div><!-- message(if any) -->
+                    
+                    <div class="productscontainer">
+
+                        <% for(p of JSON.parse(products)) {%>
+                            
+                            <div class="eachproducts">
+                                
+                                <div class="product"><!-- product -->
+
+                                    <div class="image"><!-- product icon -->
+                                        <div class="icon">
+                                            <%= p.icon %>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="details">
+                                    
+                                        <div class="name"><!-- product name -->
+                                            <%= p.name %>
+                                        </div>
+                                    
+                                        <div class="price">
+
+                                            <div class="cart"><!-- add to cart -->
+                                                <a href="/addtocart?id=<%= p.p_id %>&route=products/?page=<%= current %>">
+                                                    <svg stroke="#fff" fill="#fff" stroke-width="0" viewBox="0 0 20 20"
+                                                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                    
+                                            $<%= p.price %><!-- product price -->
+                                    
+                                            <a href="/product/<%= p.p_id %>"><!-- link to product details -->
+                                                <svg stroke="#eeca89" fill="#eeca89" stroke-width="0"
+                                                    viewBox="0 0 256 512" height="1em" width="1em"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        
+                                        </div>
+                                    
+                                    </div>
+                                
+                                </div><!-- product div ends here -->
+                            
+                            </div>
+                        <% } %>
+
+                    </div>
+                    
+                    <div class="pagination"><!-- pagination -->
+                        <% for(let p=1; p<=pages;p++) { %>
+                            <a class="page <%= (p==current)? 'active': ''  %>" href="/products?page=<%= p %>">
+                                <div>
+                                    <%= p %>
+                                </div>
+                            </a>
+                        <% } %>
+                    </div>
+                
+                </div><!-- body div ends here -->
+            
+            </div><!-- content div ends here -->
+
+        </div><!-- container div ends here -->
+
+    </body><!-- body ends here -->
+
+</html><!-- html ends here -->

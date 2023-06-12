@@ -1,0 +1,50 @@
+<div class="navbar"><!-- Navbar starts here -->
+
+    <div class="logo"><!-- farm logo -->
+        <img src="http://localhost:3000/public/assests/logo1.png" alt="logo">
+    </div>
+    
+    <ul>
+        <li><a href="/" class="<%= path=='NodeFarm'? 'active' : '' %>">Home</a></li><!-- Home -->
+        <li><a href="/catalog" class="<%= path=='Catalog'? 'active' : '' %>">Catalog</a></li><!-- Catalog -->
+        <li><a href="/categories" class="<%= path=='Categories'? 'active' : '' %>">Categories</a></li><!-- Categories -->
+        <li><a href="/products" class="<%= path=='Products'? 'active' : '' %>">Products</a></li><!-- Products -->
+        
+        <li><!-- Cart -->
+            <a href="/getmycart" class="icons <%= path=='Cart'? 'active' : '' %>">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                    </path>
+                </svg>
+            </a>
+        </li>
+        
+        <li><!-- Orders -->
+            <a class="icons <%= path=='Orders'? 'active' : '' %>" href="/getorders">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M64 556.9l264.2 173.5L512.5 577 246.8 412.7zm896-290.3zm0 0L696.8 95 512.5 248.5l265.2 164.2L512.5 577l184.3 153.4L960 558.8 777.7 412.7zM513 609.8L328.2 763.3l-79.4-51.5v57.8L513 928l263.7-158.4v-57.8l-78.9 51.5zM328.2 95L64 265.1l182.8 147.6 265.7-164.2zM64 556.9z">
+                    </path>
+                </svg>
+            </a>
+
+        </li>
+        
+        <li><!-- Logout -->
+            <a href="/logout" class="icons">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 13L16 11 7 11 7 8 2 12 7 16 7 13z"></path>
+                    <path
+                        d="M20,3h-9C9.897,3,9,3.897,9,5v4h2V5h9v14h-9v-4H9v4c0,1.103,0.897,2,2,2h9c1.103,0,2-0.897,2-2V5C22,3.897,21.103,3,20,3z">
+                    </path>
+                </svg>
+            </a>
+        </li>
+
+    </ul>
+
+</div><!-- Navbar ends here -->

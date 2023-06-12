@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><!-- html starts here -->
+
+<head><!-- head starts here -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title><!-- title -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/public/auth.css"><!-- auth CSS -->
+</head><!-- head ends here -->
+
+<body><!-- body starts here -->
+
+    <div class="container"><!-- container starts here -->
+
+        <div class="content"><!-- content starts here -->
+
+            <div class="part2"><!-- part2 starts here -->
+
+                <div class="row1"><!-- icons -->
+
+                    <div class="iconContainer">
+                        <div class="icon">🌽</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍅</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍖</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍞</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍄</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍯</div>
+                    </div>
+
+                </div>
+
+                <div class="row2"><!-- farm logo -->
+                    <img src="http://localhost:3000/public/assests/logo2.png">
+                </div>
+
+                <div class="row3"><!-- icons -->
+
+                    <div class="iconContainer">
+                        <div class="icon">🥟</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🍥</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🥚</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🥑</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🥮</div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="icon">🧇</div>
+                    </div>
+
+                </div>
+
+            </div><!-- part2 ends here -->
+
+            <div class="part1"><!-- part1 starts here -->
+
+                <% if(error) {%><!-- if error then show it -->
+                    <div class="error">
+                        <%= error %>
+                    </div>
+                <% } %>
+
+                <form action="/login" method="POST"><!-- form -->
+
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Add your email here..." required>
+
+                    <label for="password">Password <span>*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Add your password here..."
+                        required>
+
+                    <input type="submit" value="Login">
+                </form>
+
+                <div class="link"><!-- sign up page link -->
+                    Create a new account?
+                    <a href="http://localhost:3000/signup">Sign Up</a>
+                </div>
+
+            </div><!-- part1 ends here -->
+
+        </div><!-- content div ends here -->
+
+    </div><!-- container div ends here -->
+
+</body><!-- body ends here -->
+
+</html><!-- html ends here -->
