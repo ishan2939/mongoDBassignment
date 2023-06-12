@@ -28,7 +28,7 @@ Router.route('/categories').get(checkJWT.verifyToEnter, productController.getCat
 Router.route('/categories/:category').get(checkJWT.verifyToEnter, productController.getProductFromCategory);
 
 /*products handler*/
-Router.route('/products').get(checkJWT.verifyToEnter, productController.getProdcutsPage);
+Router.route('/products').get(checkJWT.verifyToEnter, productController.getProductsPage);
 Router.route('/product/:id').get(checkJWT.verifyToEnter, productController.getProductById);
 
 /* get searched products*/

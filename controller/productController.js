@@ -98,58 +98,8 @@ exports.getAllProducts = async (req, res) => {  //get all products from database
 };
 
 
-exports.getProductById = async (req, res) => {  //get product by id
-    try {
-        Product.aggregate([ //use aggregation
-            { $match: { _id: new mongoose.Types.ObjectId(req.params.id) } },    //match it with id
-            {
-                $project: {
-                    name: "$productName",   //project productname to name
-                    icon: 1,    //include icon
-                    price: {
-                        $concat: [
-                            { $convert: { input: "$price", to: "string", onError: 0, onNull: 0 } },
-                            " $ for ",
-                            "$quantity"
-                        ]
-                    },  //add price and quantity together and return it as price
-                    location: { $concat: ["From ", "$from"] },  //add location
-                    nutrients: { $split: ["$nutrients", ", "] },    //convert nutrients from "," seperated string to array
-                    organic: 1, //include organic 
-                    desc: "$description",   //project description to desc
-                    type: 1,    //add type
-                    category: 1 //add category
-                }
-            }
-        ])
-            .exec()
-            .then((result) => {
-                if (result.length != 0) {   //if there are products in database then render products page with products
-                    return res.render('product', { path: 'Products', title: result[0].name, response: result });
-                }
-                //else if user tries to enter any wrong/random id then
-                //redirect to home page
-                return res.redirect('/');
-            })
-            .catch((err) => {   //if error exists then throw it
-                throw err;
-            })
 
-        //second way of achieving the same result
-
-        /*const foundProduct = await Product.findById(req.params.id, {_id: 0});
-
-        if (foundProduct)
-            return 
-        else
-            return res.status(404).json({ status: "Failure", response: "We could not find the product that you are looking for." });
-        */
-
-    }
-    catch (err) {   //if error
-        return res.status(400).json({ status: "Failure", error: err.message }); //then send error
-    }
-};
+//Functionalities that are part of frontend
 
 exports.getHomePage = async (req, res) => { //render home page
     try {
@@ -267,7 +217,60 @@ exports.getProductFromCategory = async (req, res) => {  //get products from a pe
     }
 };
 
-exports.getProdcutsPage = async (req, res) => { //get products page
+exports.getProductById = async (req, res) => {  //get product by id
+    try {
+        Product.aggregate([ //use aggregation
+            { $match: { _id: new mongoose.Types.ObjectId(req.params.id) } },    //match it with id
+            {
+                $project: {
+                    name: "$productName",   //project productname to name
+                    icon: 1,    //include icon
+                    price: {
+                        $concat: [
+                            { $convert: { input: "$price", to: "string", onError: 0, onNull: 0 } },
+                            " $ for ",
+                            "$quantity"
+                        ]
+                    },  //add price and quantity together and return it as price
+                    location: { $concat: ["From ", "$from"] },  //add location
+                    nutrients: { $split: ["$nutrients", ", "] },    //convert nutrients from "," seperated string to array
+                    organic: 1, //include organic 
+                    desc: "$description",   //project description to desc
+                    type: 1,    //add type
+                    category: 1 //add category
+                }
+            }
+        ])
+            .exec()
+            .then((result) => {
+                if (result.length != 0) {   //if there are products in database then render products page with products
+                    return res.render('product', { path: 'Products', title: result[0].name, response: result });
+                }
+                //else if user tries to enter any wrong/random id then
+                //redirect to home page
+                return res.redirect('/');
+            })
+            .catch((err) => {   //if error exists then throw it
+                throw err;
+            })
+
+        //second way of achieving the same result
+
+        /*const foundProduct = await Product.findById(req.params.id, {_id: 0});
+
+        if (foundProduct)
+            return 
+        else
+            return res.status(404).json({ status: "Failure", response: "We could not find the product that you are looking for." });
+        */
+
+    }
+    catch (err) {   //if error
+        return res.status(400).json({ status: "Failure", error: err.message }); //then send error
+    }
+};
+
+exports.getProductsPage = async (req, res) => { //get products page
 
     try {
 
