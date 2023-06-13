@@ -50,9 +50,9 @@ Router.route('/cancelorder/:id').get(checkJWT.verifyToEnter, orderController.can
 Router.route('/logout').get(checkJWT.verifyToEnter, authController.logout);
 
 /* product operations (not part of the frontend)*/ 
-Router.route('/getallproduct').get(productController.getAllProducts);
-Router.route('/addproduct').post(productController.addProduct);
-Router.route('/updateproduct').post(productController.updateProduct);
-Router.route('/deleteproduct/:id').post(productController.deleteProduct);
+Router.route('/getallproduct').get(checkJWT.verifyToEnter, productController.getAllProducts);
+Router.route('/addproduct').post(checkJWT.verifyToEnter, productController.addProduct);
+Router.route('/updateproduct/:id').patch(checkJWT.verifyToEnter, productController.updateProduct);
+Router.route('/deleteproduct/:id').delete(checkJWT.verifyToEnter, productController.deleteProduct);
 
 module.exports = Router;
